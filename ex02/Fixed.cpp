@@ -67,6 +67,52 @@ Fixed Fixed::operator/(const Fixed &fixed) const {
 	return (result);
 }
 
+bool Fixed::operator==(const Fixed &fixed) const {
+	return (this -> getRawBits() == fixed.getRawBits());
+}
+
+bool Fixed::operator!=(const Fixed &fixed) const {
+	return (this -> getRawBits() != fixed.getRawBits());
+}
+
+bool Fixed::operator>=(const Fixed &fixed) const {
+	return (this -> getRawBits() >= fixed.getRawBits());
+}
+
+bool Fixed::operator<=(const Fixed &fixed) const {
+	return (this -> getRawBits() <= fixed.getRawBits());
+}
+
+bool Fixed::operator<(const Fixed &fixed) const {
+	return (this -> getRawBits() < fixed.getRawBits());
+}
+
+bool Fixed::operator>(const Fixed &fixed) const {
+	return (this -> getRawBits() > fixed.getRawBits());
+}
+
+Fixed &Fixed::operator++() {
+	this->value++;
+	return *this;
+}
+
+Fixed Fixed::operator++(int) {
+	Fixed previous = *this;
+	this->value++;
+	return (previous);
+}
+
+Fixed &Fixed::operator--() {
+	this->value--;
+	return *this;
+}
+
+Fixed Fixed::operator--(int) {
+	Fixed previous = *this;
+	this->value--;
+	return (previous);
+}
+
 int Fixed::getRawBits() const {
 	std::cout << "getRawBits member function called" << std::endl;
 	return (this -> value);
