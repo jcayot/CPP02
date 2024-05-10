@@ -20,6 +20,11 @@ class Fixed {
 		Fixed(const Fixed &source);
 		~Fixed();
 
+		static Fixed&	min(Fixed &fixed1, Fixed &fixed2);
+		static Fixed&	min(const Fixed &fixed1, const Fixed &fixed2);
+		static Fixed&	max(Fixed &fixed1, Fixed &fixed2);
+		static Fixed&	max(const Fixed &fixed1, const Fixed &fixed2);
+
 		Fixed	&operator=(const Fixed &source);
 		Fixed	operator+(const Fixed &fixed) const;
 		Fixed	operator-(const Fixed &fixed) const;

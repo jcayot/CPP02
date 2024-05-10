@@ -30,6 +30,30 @@ Fixed::~Fixed() {
 	std::cout << "Destructor called" << std::endl;
 }
 
+Fixed &Fixed::min(Fixed &fixed1, Fixed &fixed2) {
+	if (fixed1 < fixed2)
+		return (fixed1);
+	return (fixed2);
+}
+
+Fixed &Fixed::min(const Fixed &fixed1, const Fixed &fixed2) {
+	if (fixed1 < fixed2)
+		return (const_cast<Fixed &>(fixed1));
+	return (const_cast<Fixed &>(fixed2));
+}
+
+Fixed &Fixed::max(Fixed &fixed1, Fixed &fixed2) {
+	if (fixed1 > fixed2)
+		return (fixed1);
+	return (fixed2);
+}
+
+Fixed &Fixed::max(const Fixed &fixed1, const Fixed &fixed2) {
+	if (fixed1 > fixed2)
+		return (const_cast<Fixed &>(fixed1));
+	return (const_cast<Fixed &>(fixed2));
+}
+
 Fixed &Fixed::operator=(const Fixed &source) {
 	std::cout << "Copy assignment operator called" << std::endl;
 	if (this == &source)
@@ -44,27 +68,19 @@ std::ostream &operator<<(std::ostream &os, const Fixed &object) {
 }
 
 Fixed Fixed::operator+(const Fixed &fixed) const {
-	Fixed result;
-	result.setRawBits(this -> getRawBits() + fixed.getRawBits());
-	return (result);
+	return (Fixed(this -> toFloat() + fixed.toFloat()));
 }
 
 Fixed Fixed::operator-(const Fixed &fixed) const {
-	Fixed result;
-	result.setRawBits(this -> getRawBits() - fixed.getRawBits());
-	return (result);
+	return (Fixed(this -> toFloat() - fixed.toFloat()));
 }
 
 Fixed Fixed::operator*(const Fixed &fixed) const {
-	Fixed result;
-	result.setRawBits(this -> getRawBits() * fixed.getRawBits());
-	return (result);
+	return (Fixed(this -> toFloat() * fixed.toFloat()));
 }
 
 Fixed Fixed::operator/(const Fixed &fixed) const {
-	Fixed result;
-	result.setRawBits(this -> getRawBits() / fixed.getRawBits());
-	return (result);
+	return (Fixed(this -> toFloat() / fixed.toFloat()));
 }
 
 bool Fixed::operator==(const Fixed &fixed) const {
