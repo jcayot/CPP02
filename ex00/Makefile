@@ -1,5 +1,5 @@
 NAME = fixed
-CC = g++
+CC = c++
 CFLAGS = -Wall -Wextra -Werror
 SRCS =  Fixed.cpp main.cpp
 OBJS = $(SRCS:.cpp=.o)
